@@ -1,0 +1,11 @@
+# ARM build outputs
+*.o
+*.bin
+*.axf
+*.elf
+*.map
+
+# Editor temporary files
+*.swp
+*.swo
+*~
