@@ -28,7 +28,7 @@ uint8_t Hal_uart_get_char(void)
 	//Check for an error flag
 	if(Uart->uartdr.all & 0xFFFFFF00)
 	{
-		Uart->uartrsr.bits.all = 0xFF;
+		Uart->uartrsr.all = 0xFF;
 		return 0;
 	}
 
