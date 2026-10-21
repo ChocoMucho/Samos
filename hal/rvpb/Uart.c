@@ -22,16 +22,17 @@ void Hal_uart_put_char(uint8_t ch)
 
 uint8_t Hal_uart_get_char(void)
 {
-	uint8_t data;
-	while(Uart->uartfr.bits.RXFF);
+	uint32_t data;
+	while(Uart->uartfr.bits.RXFE);
+
+	data = Uart->uartdr.all;
 
 	//Check for an error flag
-	if(Uart->uartdr.all & 0xFFFFFF00)
+	if(data & 0xFFFFFF00)
 	{
 		Uart->uartrsr.all = 0xFF;
 		return 0;
 	}
 
-	data = Uart->uartdr.bits.DATA;
-	return data;
+	return (uint8_t)(data & 0xFF);
 } 
