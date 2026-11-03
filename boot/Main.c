@@ -20,8 +20,6 @@ void main(void)
 
 	Printf_test();
 
-	while(1);
-
 	i = 100;
 	while(i--)
 	{
