@@ -10,10 +10,10 @@ typedef union TimerXControl_t
 		uint32_t TimerSize:1;	// 1
 		uint32_t TimerPre:2;	// 3:2
 		uint32_t Reserved0:1;	// 4
-		uint32_t IntEnable:1	// 5
-		uint32_t TimerMode:1	// 6
-		uint32_t TimerEn:1	// 7
-		uint32_t Reserved1:24	// 31:8	
+		uint32_t IntEnable:1;	// 5
+		uint32_t TimerMode:1;	// 6
+		uint32_t TimerEn:1;	// 7
+		uint32_t Reserved1:24;	// 31:8	
 	} bits;
 } TimerXControl_t;
 
@@ -43,7 +43,7 @@ typedef struct Timer_t
 	uint32_t	timerxvalue;	// 0x04
 	TimerXControl_t	timerxcontrol;	// 0x08
 	uint32_t	timerxintclr;	// 0x0C
-	TimerXRIX_t	timerxris;	// 0x10
+	TimerXRIS_t	timerxris;	// 0x10
 	TimerXMIS_t	timerxmis;	// 0x14
 	uint32_t	timerxbgload;	// 0x18
 } Timer_t;
@@ -52,7 +52,7 @@ typedef struct Timer_t
 #define TIMER_INTERRUPT	36
 
 #define TIMER_FREERUNNING	0
-#define TIMER_PERIOIC		1
+#define TIMER_PERIODIC		1
 
 #define TIMER_16BIT_COUNTER	0
 #define TIMER_32BIT_COUNTER	1
