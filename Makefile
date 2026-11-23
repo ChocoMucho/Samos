@@ -28,7 +28,8 @@ C_OBJS = $(patsubst %.c, build/%.o, $(C_SRCS))
 INC_DIRS = -I include	\
 	   -I hal	\
 	   -I hal/$(TARGET)	\
-	   -I lib
+	   -I lib \
+	   -I kernel
 
 CFLAGS = -c -g -std=c11 -mthumb-interwork
 

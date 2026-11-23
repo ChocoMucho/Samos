@@ -1,9 +1,11 @@
 #include "stdint.h"
+#include "stdbool.h"
 #include "HalUart.h"
 
 #include "stdio.h"
 
 #include "task.h"
+#include "Kernel.h"
 
 static void Hw_init(void);
 static void Kernel_init(void);

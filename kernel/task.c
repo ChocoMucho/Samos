@@ -40,7 +40,7 @@ void Kernel_task_start(void)
 
 uint32_t Kernel_task_create(KernelTaskFunc_t startFunc)
 {
-	KernelTcb* new_tcb = &sTask_list[sAllocated_tcb_index++];
+	KernelTcb_t* new_tcb = &sTask_list[sAllocated_tcb_index++];
 
 	if(sAllocated_tcb_index > MAX_TASK_NUM)
 	{
