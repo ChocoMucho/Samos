@@ -76,7 +76,7 @@ static void Printf_test(void)
 	char* str = "printf pointer test";
 	char* nullptr = 0;
 	uint32_t i = 5;
-	uint32_t* sysctrl0 = (uint32_t)0x10001000;
+	uint32_t* sysctrl0 = (uint32_t*)0x10001000;
 
 	debug_printf("%s\n", "Hello printf");
 	debug_printf("output string pointer: %s\n", str);
