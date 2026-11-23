@@ -16,11 +16,13 @@ ASM_OBJS = $(patsubst boot/%.S, build/%.o, $(ASM_SRCS))
 
 VPATH = boot \
 	hal/$(TARGET) \
-	lib
+	lib \
+	kernel
 
 C_SRCS = $(notdir $(wildcard boot/*.c)) #소스파일 모으기
 C_SRCS += $(notdir $(wildcard hal/$(TARGET)/*.c)) #하드웨어에 맞는 소스파일
 C_SRCS += $(notdir $(wildcard lib/*.c))
+C_SRCS += $(notdir $(wildcard kernel/*.c))
 C_OBJS = $(patsubst %.c, build/%.o, $(C_SRCS))
 
 INC_DIRS = -I include	\
