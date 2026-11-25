@@ -8,10 +8,14 @@ static KernelTcb_t	sTask_list[MAX_TASK_NUM];
 static uint32_t		sAllocated_tcb_index;
 
 static uint32_t		sCurrent_tcb_index;
-static KernelTcb_t*	Scheduler_round_robin_algorithm(void);
 
 static KernelTcb_t*	sCurrent_tcb;
 static KernelTcb_t*	sNext_tcb;
+
+
+static KernelTcb_t*	Scheduler_round_robin_algorithm(void);
+static void		Save_context(void);
+static void		Restore_context(void);
 
 void Kernel_task_init(void)
 {
