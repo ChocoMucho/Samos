@@ -34,3 +34,29 @@ bool Kernel_event_flag_check(KernelEventFlag_t event)
 
 	return false;
 }
+
+void Kernel_send_events(uint32_t event_list)
+{
+	for(uint32_t i = 0; i < 32; ++i)
+	{
+		if((event_list >> i) & 1)
+		{
+			KernelEventFlag_t sening_event = KernelEventFlag_Empty;
+			sending_event = (KernelEventFlag_t)SET_BIT(sending_event, i); // ../include/memio.h
+			Kernel_event_flag_set(sending_event);					      
+		}
+	}
+}
+
+KernelEventFlag_t Kernel_wait_events(uint32_t waiting_list)
+{
+	for(uint32_t i = 0; i < 32; ++i)
+	{
+		if((waiting_list >> i) & 1)
+		{
+			KernelEventFlag_t waiting_event = KernelEventFlag_Empty;
+		}
+	}
+
+	return
+}
