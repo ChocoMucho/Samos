@@ -3,6 +3,7 @@
 
 #include "stdio.h"
 #include "event.h"
+#include "memio.h"
 
 static uint32_t sEventFlag;
 
@@ -41,7 +42,7 @@ void Kernel_send_events(uint32_t event_list)
 	{
 		if((event_list >> i) & 1)
 		{
-			KernelEventFlag_t sening_event = KernelEventFlag_Empty;
+			KernelEventFlag_t sending_event = KernelEventFlag_Empty;
 			sending_event = (KernelEventFlag_t)SET_BIT(sending_event, i); // ../include/memio.h
 			Kernel_event_flag_set(sending_event);					      
 		}
@@ -55,8 +56,14 @@ KernelEventFlag_t Kernel_wait_events(uint32_t waiting_list)
 		if((waiting_list >> i) & 1)
 		{
 			KernelEventFlag_t waiting_event = KernelEventFlag_Empty;
+			waiting_event = (KernelEventFlag_t)SET_BIT(waiting_event, i);
+
+			if(Kernel_event_flag_check(waiting_event))
+			{
+				return waiting_event;
+			}
 		}
 	}
 
-	return
+	return KernelEventFlag_Empty;
 }
